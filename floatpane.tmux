@@ -24,3 +24,7 @@ root_bind="$(fp_opt @floatpane-root-bind '')"
 
 # root-table toggle (no prefix). Disabled by default; set e.g. M-p to enable.
 [ -n "$root_bind" ] && tmux bind -n "$root_bind" run-shell "bash '$SCRIPT' toggle"
+
+# the guard above is false in the default (empty root_bind) config — don't let
+# that leak out as exit 1, or every conf reload prints a scary "returned 1"
+exit 0
