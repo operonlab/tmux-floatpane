@@ -104,6 +104,11 @@ set -g @plugin 'joneshong/tmux-floatpane'
 可以。在浮動視窗裡：選單 → **embed to session**，把目前視窗放回你剛才來的工作
 階段。在一般視窗裡：選單 → **pop window out**，把它浮起來。
 
+**問：為什麼按 `prefix` `t` 沒有跳出 tmux 內建的時鐘？**
+`@floatpane-bind-toggle` 預設值是 `t`，會取代 tmux 內建的 `prefix` + `t`
+時鐘顯示綁定。如果你想保留內建時鐘，改用別的鍵，例如
+`set -g @floatpane-bind-toggle 'j'`。
+
 ---
 
 ## 完全移除
@@ -117,6 +122,13 @@ bash ~/.tmux/plugins/tmux-floatpane/scripts/teardown.sh
 然後把 `~/.tmux.conf` 裡的外掛那行刪掉（`run-shell ...floatpane.tmux` 或
 `set -g @plugin 'joneshong/tmux-floatpane'`），再 `prefix` `r` 重新載入。移除
 程序不會動你自己加的 `@floatpane-*` 設定行，那些要自己手動刪。
+
+`scratch` 工作階段本身——以及你留在裡面的任何東西——移除程序**不會**殺掉，
+這是刻意的，避免你的工作內容不見。想要完全清乾淨的話自己執行：
+
+```sh
+tmux kill-session -t scratch
+```
 
 ---
 

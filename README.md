@@ -1,5 +1,7 @@
 # tmux-floatpane
 
+> 中文說明請見 [docs/zh.md](docs/zh.md)
+
 A **floating scratch terminal for tmux** — press one key and a small terminal
 window slides open on top of whatever you're doing. Press the same key again and
 it disappears, remembering exactly what you left there.
@@ -88,10 +90,7 @@ session (`e`). No keyboard gymnastics needed.
 
 ## 3. Demo
 
-![tmux-floatpane demo](docs/demo.gif)
-
-> _The demo GIF (`docs/demo.gif`) is a placeholder — a real recording made with
-> [vhs](https://github.com/charmbracelet/vhs) is still to be added._
+*Demo GIF coming soon.*
 
 ---
 
@@ -103,7 +102,7 @@ want to change something.
 
 | Option | Default | What it does (plain words) |
 |---|---|---|
-| `@floatpane-bind-toggle` | `t` | The key (after your prefix) that shows/hides the float. |
+| `@floatpane-bind-toggle` | `t` | The key (after your prefix) that shows/hides the float. Note: the default `t` replaces tmux's built-in `prefix` + `t` clock binding. |
 | `@floatpane-bind-menu` | `P` | The key (after your prefix) that opens the resize/menu. |
 | `@floatpane-root-bind` | _(empty)_ | A **no-prefix** shortcut to toggle, e.g. set to `M-p` (Alt-p). Empty means off. ⚠️ see note below. |
 | `@floatpane-hotkeys` | `on` | While the float is open, extra `Ctrl-Alt-*` shortcuts resize it. Set `off` to disable them. ⚠️ see note below. |
@@ -150,6 +149,14 @@ Then delete the plugin line from `~/.tmux.conf` (the `run-shell ...floatpane.tmu
 line, or the `set -g @plugin 'joneshong/tmux-floatpane'` line) and reload with
 `prefix` `r`. The teardown leaves your own `@floatpane-*` config lines alone —
 remove those by hand if you added any.
+
+The `scratch` session itself — and anything you left running inside it — is
+intentionally **not** killed by teardown, so you don't lose work. Remove it
+yourself if you want a full clean slate:
+
+```sh
+tmux kill-session -t scratch
+```
 
 ---
 

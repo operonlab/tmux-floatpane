@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # teardown.sh — clean removal. Unbinds every key floatpane installed and clears
-# its runtime tmux options, leaving your tmux server as if the plugin never ran.
-# Your user @floatpane-* settings in tmux.conf are left alone (remove those lines
-# yourself). Run from an attached client: bash scripts/teardown.sh
+# its runtime tmux options. The `scratch` session (and anything left running in
+# it) is intentionally preserved — kill it yourself with `tmux kill-session -t
+# scratch` if you want it gone too. Your user @floatpane-* settings in
+# tmux.conf are left alone (remove those lines yourself).
+# Run from an attached client: bash scripts/teardown.sh
 
 set -u
 
