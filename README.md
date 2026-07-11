@@ -44,9 +44,9 @@ Copy-paste these three steps into your terminal:
 
 ```sh
 # 1. Download the plugin somewhere permanent
-git clone https://github.com/omerxx/tmux-floax ~/.tmux/plugins/tmux-floatpane
-# ^ replace the URL above with this repo's URL once it is published;
-#   or just point the clone at wherever you already have this folder.
+git clone https://github.com/joneshong/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
+# ^ This repo is not published yet, so that URL 404s for now. Until it is,
+#   just copy this folder to ~/.tmux/plugins/tmux-floatpane instead of cloning.
 
 # 2. Tell tmux to load it — appends one line to your config
 echo "run-shell ~/.tmux/plugins/tmux-floatpane/floatpane.tmux" >> ~/.tmux.conf

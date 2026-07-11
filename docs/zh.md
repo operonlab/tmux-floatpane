@@ -38,9 +38,9 @@
 
 ```sh
 # 1. 把外掛下載到一個固定的位置
-git clone https://github.com/omerxx/tmux-floax ~/.tmux/plugins/tmux-floatpane
-# ↑ 這個 repo 正式發布後，把上面網址換成本 repo 的網址；
-#   或直接把你已經有的這個資料夾路徑填進去。
+git clone https://github.com/joneshong/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
+# ↑ 這個 repo 還沒發布，所以上面的網址目前會 404。發布前，
+#   請直接把這個資料夾複製到 ~/.tmux/plugins/tmux-floatpane。
 
 # 2. 叫 tmux 載入它——會在你的設定檔加一行
 echo "run-shell ~/.tmux/plugins/tmux-floatpane/floatpane.tmux" >> ~/.tmux.conf
