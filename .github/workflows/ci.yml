@@ -1,0 +1,45 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  shellcheck:
+    name: shellcheck (-S warning)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Lint all shell scripts
+        run: |
+          shellcheck -S warning \
+            floatpane.tmux \
+            scripts/floatpane.sh \
+            scripts/teardown.sh \
+            tests/smoke.sh
+
+  smoke:
+    name: smoke (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tmux (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y tmux
+      - name: Install tmux (macOS)
+        if: runner.os == 'macOS'
+        run: brew install tmux
+      - name: Headless smoke tests
+        # These run against an isolated -L socket and need NO attached client.
+        # Popup *rendering* (resize/embed/lock visuals) genuinely cannot be
+        # verified on a headless runner and is reported as SKIP by the harness;
+        # those must be checked by a human on a real attached client. macOS
+        # popup behaviour in particular differs from Linux and is not asserted.
+        run: bash tests/smoke.sh
