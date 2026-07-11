@@ -28,7 +28,7 @@
 
 ## 快速上手
 
-你需要 **tmux 3.2 或更新版本**（輸入 `tmux -V` 查看）。下面兩條路擇一即可，結果
+你需要 **tmux 3.3 或更新版本**（輸入 `tmux -V` 查看）。下面兩條路擇一即可，結果
 一樣：**按 `prefix` 再按 `t`** 就能開關浮動視窗。（`prefix` 是你的 tmux 前綴鍵，
 沒改過的話是 `Ctrl-b`。）
 
@@ -39,8 +39,6 @@
 ```sh
 # 1. 把外掛下載到一個固定的位置
 git clone https://github.com/joneshong/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
-# ↑ 這個 repo 還沒發布，所以上面的網址目前會 404。發布前，
-#   請直接把這個資料夾複製到 ~/.tmux/plugins/tmux-floatpane。
 
 # 2. 叫 tmux 載入它——會在你的設定檔加一行
 echo "run-shell ~/.tmux/plugins/tmux-floatpane/floatpane.tmux" >> ~/.tmux.conf

@@ -34,7 +34,7 @@ in and out of the float — all from a small menu, no arcane shortcuts required.
 
 ## 2. Quickstart
 
-You need **tmux 3.2 or newer** (`tmux -V` to check). Pick one of the two paths
+You need **tmux 3.3 or newer** (`tmux -V` to check). Pick one of the two paths
 below. Both end with the same result: **press `prefix` then `t`** to toggle the
 float. (`prefix` is your tmux prefix key — `Ctrl-b` unless you changed it.)
 
@@ -45,8 +45,6 @@ Copy-paste these three steps into your terminal:
 ```sh
 # 1. Download the plugin somewhere permanent
 git clone https://github.com/joneshong/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
-# ^ This repo is not published yet, so that URL 404s for now. Until it is,
-#   just copy this folder to ~/.tmux/plugins/tmux-floatpane instead of cloning.
 
 # 2. Tell tmux to load it — appends one line to your config
 echo "run-shell ~/.tmux/plugins/tmux-floatpane/floatpane.tmux" >> ~/.tmux.conf

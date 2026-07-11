@@ -36,6 +36,19 @@ jobs:
       - name: Install tmux (macOS)
         if: runner.os == 'macOS'
         run: brew install tmux
+      - name: Assert tmux >= 3.3 (popup uses -S/-s/-b/-T, added in 3.3)
+        run: |
+          ver="$(tmux -V | awk '{print $2}')"
+          case "$ver" in
+            master|next-*) echo "tmux $ver: dev build, assumed >= 3.3"; exit 0 ;;
+          esac
+          num="${ver%[a-z]}"          # 3.3a -> 3.3
+          maj="${num%%.*}"
+          min="${num#*.}"; min="${min%%.*}"
+          if [ "$maj" -lt 3 ] || { [ "$maj" -eq 3 ] && [ "$min" -lt 3 ]; }; then
+            echo "tmux $ver is below the required 3.3"; exit 1
+          fi
+          echo "tmux $ver satisfies >= 3.3"
       - name: Headless smoke tests
         # These run against an isolated -L socket and need NO attached client.
         # Popup *rendering* (resize/embed/lock visuals) genuinely cannot be

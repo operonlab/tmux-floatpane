@@ -9,6 +9,11 @@ follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 First release. A hardened, single-file fork of
 [omerxx/tmux-floax](https://github.com/omerxx/tmux-floax) (GPL-3.0).
 
+### Requirements
+
+- tmux **3.3** or newer. The floating popup uses `display-popup -S/-s/-b/-T`,
+  which were added in tmux 3.3 (the bare `display-popup` command is 3.2).
+
 ### Added
 
 - Floating scratch pane via `tmux popup` with a persistent `scratch` session.
