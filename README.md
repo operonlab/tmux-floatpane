@@ -6,6 +6,10 @@ A **floating scratch terminal for tmux** — press one key and a small terminal
 window slides open on top of whatever you're doing. Press the same key again and
 it disappears, remembering exactly what you left there.
 
+![A floating scratch terminal with a rounded magenta border hovers over a full working terminal; a note written and read back inside proves it is a real, persistent shell](docs/screenshot.png)
+
+*One key press pops a floating `scratch` terminal on top of your work — a real, persistent shell that keeps whatever you leave in it.*
+
 > **Honest framing:** this is a *hardened fork* of the excellent
 > [omerxx/tmux-floax](https://github.com/omerxx/tmux-floax) (GPL-3.0). As of
 > 2026-07, floax has ~848 stars and its last commit was 2026-02-24 with ~37 open
