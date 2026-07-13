@@ -46,7 +46,7 @@ Copy-paste these three steps into your terminal:
 
 ```sh
 # 1. Download the plugin somewhere permanent
-git clone https://github.com/joneshong/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
+git clone https://github.com/operonlab/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
 
 # 2. Tell tmux to load it — appends one line to your config
 echo "run-shell ~/.tmux/plugins/tmux-floatpane/floatpane.tmux" >> ~/.tmux.conf
@@ -74,7 +74,7 @@ run '~/.tmux/plugins/tpm/tpm'
 **Then add this plugin.** Put this line in `~/.tmux.conf` *above* the `run` line:
 
 ```tmux
-set -g @plugin 'joneshong/tmux-floatpane'
+set -g @plugin 'operonlab/tmux-floatpane'
 ```
 
 Reload your config (`prefix` `r`), then press `prefix` `I` (capital i) to have TPM
@@ -146,7 +146,7 @@ bash ~/.tmux/plugins/tmux-floatpane/scripts/teardown.sh
 ```
 
 Then delete the plugin line from `~/.tmux.conf` (the `run-shell ...floatpane.tmux`
-line, or the `set -g @plugin 'joneshong/tmux-floatpane'` line) and reload with
+line, or the `set -g @plugin 'operonlab/tmux-floatpane'` line) and reload with
 `prefix` `r`. The teardown leaves your own `@floatpane-*` config lines alone —
 remove those by hand if you added any.
 
@@ -232,7 +232,7 @@ a from-scratch invention.
 ### Migrating from floax
 
 1. Remove your floax plugin line (`set -g @plugin 'omerxx/tmux-floax'`) and add
-   `set -g @plugin 'joneshong/tmux-floatpane'` (or the `run-shell` line).
+   `set -g @plugin 'operonlab/tmux-floatpane'` (or the `run-shell` line).
 2. Rename your options: every `@floax-*` becomes `@floatpane-*` (e.g.
    `@floax-width` → `@floatpane-width`, `@floax-bind` → `@floatpane-bind-toggle`).
 3. Reload (`prefix` `r`); `prefix` `t` toggles as before.

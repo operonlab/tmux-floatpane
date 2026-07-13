@@ -38,7 +38,7 @@
 
 ```sh
 # 1. 把外掛下載到一個固定的位置
-git clone https://github.com/joneshong/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
+git clone https://github.com/operonlab/tmux-floatpane ~/.tmux/plugins/tmux-floatpane
 
 # 2. 叫 tmux 載入它——會在你的設定檔加一行
 echo "run-shell ~/.tmux/plugins/tmux-floatpane/floatpane.tmux" >> ~/.tmux.conf
@@ -66,7 +66,7 @@ run '~/.tmux/plugins/tpm/tpm'
 **接著加入這個外掛。** 在 `~/.tmux.conf` 裡、上面那行 `run` 的**上方**加：
 
 ```tmux
-set -g @plugin 'joneshong/tmux-floatpane'
+set -g @plugin 'operonlab/tmux-floatpane'
 ```
 
 重新載入設定（`prefix` `r`），再按 `prefix` `I`（大寫 i）讓 TPM 下載它。之後
@@ -120,7 +120,7 @@ bash ~/.tmux/plugins/tmux-floatpane/scripts/teardown.sh
 ```
 
 然後把 `~/.tmux.conf` 裡的外掛那行刪掉（`run-shell ...floatpane.tmux` 或
-`set -g @plugin 'joneshong/tmux-floatpane'`），再 `prefix` `r` 重新載入。移除
+`set -g @plugin 'operonlab/tmux-floatpane'`），再 `prefix` `r` 重新載入。移除
 程序不會動你自己加的 `@floatpane-*` 設定行，那些要自己手動刪。
 
 `scratch` 工作階段本身——以及你留在裡面的任何東西——移除程序**不會**殺掉，

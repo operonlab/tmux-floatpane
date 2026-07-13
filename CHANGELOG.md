@@ -51,4 +51,4 @@ First release. A hardened, single-file fork of
   `${BASH_SOURCE[0]}`.
 - All key bindings are option-driven rather than fixed.
 
-[0.1.0]: https://github.com/joneshong/tmux-floatpane/releases/tag/v0.1.0
+[0.1.0]: https://github.com/operonlab/tmux-floatpane/releases/tag/v0.1.0
