@@ -1,62 +1,69 @@
 # tmux-floatpane demo — one key pops up a floating scratch terminal on top of
-# your work; press again to hide it; it remembers what you left inside.
-#
-# Recorded against an isolated tmux server (socket: vhsdemo-floatpane,
-# -f /dev/null), never the user's live server.
-Output docs/demo.gif
+# your work (rounded magenta border); press again to hide it; it remembers
+# whatever you left inside.
+# Fully self-contained: docs/demo-setup.sh stages a full-screen service-log
+# backdrop, a cockpit-style themed ISOLATED tmux server (socket fp-demo) and a
+# pre-created clean scratch session. Re-record from the repo root with:
+#   vhs docs/demo.tape
+Output "docs/demo.gif"
 Require tmux
 
 Set Shell "bash"
-Set Width 1200
-Set Height 660
-Set FontSize 15
-Set Padding 12
-Set TypingSpeed 55ms
+Set FontFamily "MesloLGS Nerd Font Mono"
+Set FontSize 20
+Set Width 1600
+Set Height 900
+Set Padding 20
+Set TypingSpeed 35ms
 
-# ---- hidden setup ----
 Hide
-Type "bash /private/tmp/claude-501/-Users-joneshong/aaff1254-ec36-4c2f-98bf-76d62cc8b483/scratchpad/vhs-visual/setup-floatpane.sh"
+Type "bash docs/demo-setup.sh"
 Enter
-Sleep 1s
-Type "clear; tmux -L vhsdemo-floatpane attach -t demo"
+Sleep 3s
+Type "clear; tmux -L fp-demo attach -t demo"
 Enter
 Sleep 1500ms
 Show
 
-# ---- visible demo ----
-Sleep 1500ms
+# the cockpit: a full working terminal running a service in the foreground
+Sleep 1800ms
 
-# one key: a floating scratch terminal slides open
+# one key -> a floating scratch terminal slides open on top
 Ctrl+B
-Sleep 500ms
+Sleep 400ms
 Type "t"
 Sleep 1500ms
 
-# leave something inside it
-Type "echo 'this note survives the toggle' > /tmp/floatpane-note.txt"
+# it's a real shell — leave a note in it, then read it back
+Type "# floats on top · keeps whatever you leave here"
 Enter
 Sleep 300ms
-Type "cat /tmp/floatpane-note.txt"
+Type `echo "TODO: rotate the staging API token" >> notes.txt`
 Enter
-Sleep 2s
+Sleep 300ms
+Type "cat notes.txt"
+Enter
+Sleep 2500ms
 
-# press the same key: the float hides, your layout is untouched
+# press the same key -> the float hides, your layout is untouched
 Ctrl+B
-Sleep 500ms
+Sleep 400ms
 Type "t"
 Sleep 1800ms
 
-# press again: it comes back exactly as you left it
+# press again -> it comes back exactly as you left it, note and all
 Ctrl+B
-Sleep 500ms
+Sleep 400ms
 Type "t"
-Sleep 2500ms
+Sleep 3000ms
 
-# ---- hidden teardown ----
 Hide
-Type "tmux -L vhsdemo-floatpane kill-server"
+Ctrl+B
+Type "t"
+Sleep 300ms
+Ctrl+B
+Type "d"
+Sleep 500ms
+Type "tmux -L fp-demo kill-server"
 Enter
 Sleep 500ms
-Type "rm -f /tmp/floatpane-note.txt"
-Enter
-Sleep 300ms
