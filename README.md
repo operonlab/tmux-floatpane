@@ -90,7 +90,7 @@ session (`e`). No keyboard gymnastics needed.
 
 ## 3. Demo
 
-*Demo GIF coming soon.*
+![tmux-floatpane demo — one key pops up a floating scratch terminal that remembers what you leave in it](docs/demo.gif)
 
 ---
 
