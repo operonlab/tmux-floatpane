@@ -247,7 +247,7 @@ a from-scratch invention.
 
 - **Original idea & implementation:** [omerxx/tmux-floax](https://github.com/omerxx/tmux-floax)
   by Omer Hamerman, licensed GPL-3.0.
-- **This hardened fork:** maintained by [joneshong](https://github.com/joneshong).
+- **This hardened fork:** maintained by [operonlab](https://github.com/operonlab).
 
 Because it derives from a GPL-3.0 work, `tmux-floatpane` is released under the
 **GNU General Public License v3.0** — see [LICENSE](LICENSE) for the full text.
