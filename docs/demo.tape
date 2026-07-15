@@ -1,6 +1,8 @@
 # tmux-floatpane demo — one key pops up a floating scratch terminal on top of
 # your work (rounded magenta border); press again to hide it; it remembers
-# whatever you left inside.
+# whatever you left inside. The backdrop is the family two-row pill cockpit with
+# a byte-exact Starship-clone prompt; Row-2 right shows the plugin's REAL float
+# state (session / geometry / show state) via docs/fp-status.sh.
 #
 # TIMELINE NOTE: each prefix+t beat holds the PREVIOUS screen static while the
 # KeyCastr bezel (⌃B then ⌃B T) is composited on top, and only THEN presses the
@@ -9,9 +11,9 @@
 # Type "t" is WIDE (both ⌃B and ⌃B T must be readable before the toggle fires).
 # The overlay windows in docs/demo-overlay.sh land inside these static holds.
 #
-# Fully self-contained: docs/demo-setup.sh stages a full-screen service-log
-# backdrop, a cockpit-style themed ISOLATED tmux server (socket fp-demo) and a
-# pre-created clean scratch session. Re-record from the repo root with:
+# Fully self-contained: docs/demo-setup.sh stages a cockpit-themed ISOLATED tmux
+# server (socket fp-demo) and a pre-created clean scratch session. Re-record from
+# the repo root with:
 #   vhs docs/demo.tape && bash docs/demo-overlay.sh
 Output "docs/demo-raw.gif"
 Require tmux
@@ -19,7 +21,7 @@ Require tmux
 Set Shell "bash"
 Set FontFamily "MesloLGS Nerd Font Mono"
 Set FontSize 20
-Set Width 1600
+Set Width 2392
 Set Height 900
 Set Padding 20
 Set TypingSpeed 35ms
@@ -33,11 +35,14 @@ Enter
 Sleep 1500ms
 Show
 
-# the cockpit: a full working terminal running a service in the foreground
-Sleep 1800ms
+# the cockpit: your working shell under the two-row pill status bar
+Sleep 1500ms
+Type "# tmux-floatpane: one key pops a floating scratch terminal on top of your work"
+Enter
+Sleep 2000ms
 
 # --- beat 1: bezel over the cockpit, THEN one key pops the float open ---
-Sleep 1500ms
+Sleep 1200ms
 Ctrl+B
 Sleep 1000ms
 Type "t"

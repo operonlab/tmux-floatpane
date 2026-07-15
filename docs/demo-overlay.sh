@@ -13,10 +13,12 @@
 # ("show the keys, then act").
 #
 # The windows below are EMPIRICALLY tuned to demo-raw.gif's real timeline. The
-# typed note between beats 1 and 2 shifts the later beats, so nominal Sleep sums
-# do NOT predict them. Measured toggle moments (ffmpeg frame-diff + eyes-on frame
-# audit): open ~4.25, hide ~16.00, reopen ~20.40. If you re-time the tape,
-# re-measure and re-tune these — do NOT trust the nominal Sleep sums.
+# typed lines between beats shift the later beats, so nominal Sleep sums do NOT
+# predict them. Measured toggle moments (ffmpeg tblend frame-diff + eyes-on frame
+# audit): open ~8.52, hide ~20.36, reopen ~24.72. Per beat the ⌃B bezel spans
+# [T-1.65,T-1.15] and the ⌃B T chord spans [T-1.15,T-0.15] so the chord ends
+# ~0.15s BEFORE the toggle fires. If you re-time the tape, re-measure and re-tune
+# these — do NOT trust the nominal Sleep sums.
 set -u
 cd "$(dirname "$0")"
 
@@ -28,8 +30,8 @@ done
 ffmpeg -y -loglevel error -i demo-raw.gif \
   -i assets/bezel-cb.png -i assets/bezel-cbt.png \
   -filter_complex "\
-[0:v][1:v]overlay=(W-w)/2:H-h-120:enable='between(t,2.60,3.10)+between(t,14.35,14.85)+between(t,18.75,19.25)'[v1];\
-[v1][2:v]overlay=(W-w)/2:H-h-120:enable='between(t,3.10,4.10)+between(t,14.85,15.85)+between(t,19.25,20.25)'[v2];\
+[0:v][1:v]overlay=(W-w)/2:H-h-120:enable='between(t,6.87,7.37)+between(t,18.71,19.21)+between(t,23.07,23.57)'[v1];\
+[v1][2:v]overlay=(W-w)/2:H-h-120:enable='between(t,7.37,8.37)+between(t,19.21,20.21)+between(t,23.57,24.57)'[v2];\
 [v2]split[a][b];[a]palettegen=stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5[out]" \
   -map '[out]' demo.gif
 
