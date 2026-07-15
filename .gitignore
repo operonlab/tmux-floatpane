@@ -1,2 +1,8 @@
 *.log
 .DS_Store
+
+# Demo build intermediate (vhs raw capture pre-overlay)
+docs/demo-raw.gif
+
+# Python bytecode from docs/keycast-bezel.py
+docs/__pycache__/
